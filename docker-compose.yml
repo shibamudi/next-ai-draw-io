@@ -38,8 +38,8 @@ services:
       - 'traefik.http.routers.nextaidrawio-app.rule=PathPrefix(`/nextaidrawio`)'
 
       # 中间件：认证、移除前缀并启用压缩
-      - "traefik.http.middlewares.nextaidrawio-app-redirect.redirectregex.regex=^(https?://[^/]+/nextaidrawio)/?$"
-      - "traefik.http.middlewares.nextaidrawio-app-redirect.redirectregex.replacement=$${1}/zh"
+      - "traefik.http.middlewares.nextaidrawio-app-redirect.redirectregex.regex=^(https://xplt.sdu.edu.cn/nextaidrawio)/?$"
+      - "traefik.http.middlewares.nextaidrawio-app-redirect.redirectregex.replacement=https://xplt.sdu.edu.cn/nextaidrawio/zh"
       - 'traefik.http.middlewares.nextaidrawio-app-compress.compress=true'
       - 'traefik.http.routers.nextaidrawio-app.middlewares=cas-auth,nextaidrawio-app-redirect,nextaidrawio-app-compress'
       # 服务配置
