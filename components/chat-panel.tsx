@@ -909,7 +909,6 @@ export default function ChatPanel({
     )
 
     const handleNewChat = useCallback(async () => {
-        console.log("Starting new chat session")
         // Save current session before creating new one
         if (sessionManager.isAvailable && messages.length > 0) {
             const sessionData = await buildSessionData({ withThumbnail: true })
