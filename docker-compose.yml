@@ -13,9 +13,8 @@ services:
       - 'traefik.http.routers.nextaidrawio-drawio.rule=PathPrefix(`/drawio`)'
 
       # 中间件：认证、移除前缀并启用压缩
-      - 'traefik.http.middlewares.nextaidrawio-drawio-stripprefix.stripprefix.prefixes=/drawio'
       - 'traefik.http.middlewares.nextaidrawio-drawio-compress.compress=true'
-      - 'traefik.http.routers.nextaidrawio-drawio.middlewares=cas-auth,nextaidrawio-drawio-stripprefix,nextaidrawio-drawio-compress'
+      - 'traefik.http.routers.nextaidrawio-drawio.middlewares=cas-auth,nextaidrawio-drawio-compress'
       # 服务配置
       - 'traefik.http.services.nextaidrawio-drawio.loadbalancer.server.port=8080'
   next-ai-draw-io:
