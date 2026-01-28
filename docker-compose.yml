@@ -1,17 +1,38 @@
 services:
   drawio:
     image: jgraph/drawio:latest
-    ports: ["8080:8080"]
+    restart: unless-stopped
+    labels:
+      # Traefik配置
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.nextaidrawio-drawio.rule=PathPrefix(`/drawio`)'
+
+      # 中间件：认证、移除前缀并启用压缩
+      - 'traefik.http.middlewares.nextaidrawio-drawio-stripprefix.stripprefix.prefixes=/drawio'
+      - 'traefik.http.middlewares.nextaidrawio-drawio-compress.compress=true'
+      - 'traefik.http.routers.nextaidrawio-drawio.middlewares=cas-auth,nextaidrawio-drawio-stripprefix,nextaidrawio-drawio-compress'
+      # 服务配置
+      - 'traefik.http.services.nextaidrawio-drawio.loadbalancer.server.port=8080'
   next-ai-draw-io:
     build:
       context: .
       args:
-        - NEXT_PUBLIC_DRAWIO_BASE_URL=http://localhost:8080
+        - NEXT_PUBLIC_DRAWIO_BASE_URL=https://xplt.sdu.edu.cn/drawio
         # Uncomment below for subdirectory deployment
-        # - NEXT_PUBLIC_BASE_PATH=/nextaidrawio
+        - NEXT_PUBLIC_BASE_PATH=/nextaidrawio
     ports: ["3000:3000"]
     env_file: .env
-    # environment:
-    #   # For subdirectory deployment, uncomment and set your path:
-    #   NEXT_PUBLIC_BASE_PATH: /nextaidrawio
+    environment:
+      # For subdirectory deployment, uncomment and set your path:
+      NEXT_PUBLIC_BASE_PATH: /nextaidrawio
     depends_on: [drawio]
+    labels:
+      # Traefik配置
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.nextaidrawio-app.rule=PathPrefix(`/nextaidrawio`)'
+
+      # 中间件：认证、移除前缀并启用压缩
+      - 'traefik.http.middlewares.nextaidrawio-app-compress.compress=true'
+      - 'traefik.http.routers.nextaidrawio-app.middlewares=cas-auth,nextaidrawio-app-compress'
+      # 服务配置
+      - 'traefik.http.services.nextaidrawio-app.loadbalancer.server.port=3000'
