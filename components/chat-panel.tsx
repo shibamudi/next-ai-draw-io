@@ -1265,7 +1265,10 @@ export default function ChatPanel({
                             <h1
                                 className={`${isMobile ? "text-sm" : "text-base"} font-semibold tracking-tight whitespace-nowrap`}
                             >
-                                Next AI Drawio
+                                Next AI Drawio{" "}
+                                <small className="text-gray-600">
+                                    （山东大学算力版）
+                                </small>
                             </h1>
                         </div>
                     </button>
