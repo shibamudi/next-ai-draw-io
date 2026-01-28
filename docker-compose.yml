@@ -2,6 +2,8 @@ services:
   drawio:
     image: jgraph/drawio:latest
     restart: unless-stopped
+    networks:
+      - shared
     labels:
       # Traefik配置
       - 'traefik.enable=true'
@@ -26,6 +28,8 @@ services:
       # For subdirectory deployment, uncomment and set your path:
       NEXT_PUBLIC_BASE_PATH: /nextaidrawio
     depends_on: [drawio]
+    networks:
+      - shared
     labels:
       # Traefik配置
       - 'traefik.enable=true'
@@ -36,3 +40,6 @@ services:
       - 'traefik.http.routers.nextaidrawio-app.middlewares=cas-auth,nextaidrawio-app-compress'
       # 服务配置
       - 'traefik.http.services.nextaidrawio-app.loadbalancer.server.port=3000'
+networks:
+  shared:
+    external: true
