@@ -9,7 +9,7 @@ WORKDIR /app
 COPY package.json package-lock.json* ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --registry=https://registry.npmmirror.com
 
 # Stage 2: Build application
 FROM node:24-alpine AS builder
