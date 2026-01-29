@@ -1,11 +1,16 @@
-import NextImage from "next/image"
+import NextImage, { type ImageProps } from "next/image"
+import { forwardRef } from "react"
+import { getAssetUrl } from "@/lib/base-path"
 
-export default function Image(props: React.ComponentProps<typeof NextImage>) {
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ""
-    // Prepend basePath to the src if it's a string and doesn't already start with basePath
-    let src = props.src
-    if (typeof src === "string" && !src.startsWith(basePath)) {
-        src = `${basePath}${src}`
-    }
-    return <NextImage {...props} src={src} />
-}
+export default forwardRef<HTMLImageElement, ImageProps>(
+    function Image(props, ref) {
+        const src =
+            typeof props.src === "string" &&
+            props.src.startsWith("/") &&
+            !props.src.startsWith("//")
+                ? getAssetUrl(props.src)
+                : props.src
+
+        return <NextImage {...props} src={src} ref={ref} />
+    },
+)
