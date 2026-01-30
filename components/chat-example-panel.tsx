@@ -79,7 +79,7 @@ export default function ExamplePanel({
     const dict = useDictionary()
 
     const handleReplicateFlowchart = async () => {
-        setInput("Replicate this flowchart.")
+        setInput("复现这个流程图。")
 
         try {
             const response = await fetch(getAssetUrl("/example.png"))
@@ -92,7 +92,7 @@ export default function ExamplePanel({
     }
 
     const handleReplicateArchitecture = async () => {
-        setInput("Replicate this in aws style")
+        setInput("用aws风格复现这个架构图。")
 
         try {
             const response = await fetch(getAssetUrl("/architecture.png"))
@@ -107,7 +107,7 @@ export default function ExamplePanel({
     }
 
     const handlePdfExample = async () => {
-        setInput("Summarize this paper as a diagram")
+        setInput("请将这篇论文总结成一个图表")
 
         try {
             const response = await fetch(getAssetUrl("/chain-of-thought.txt"))
@@ -178,7 +178,7 @@ export default function ExamplePanel({
                         title={dict.examples.paperToDiagram}
                         description={dict.examples.paperDescription}
                         onClick={handlePdfExample}
-                        isNew
+                        // isNew
                     />
 
                     <ExampleCard
@@ -187,7 +187,7 @@ export default function ExamplePanel({
                         description={dict.examples.animatedDescription}
                         onClick={() => {
                             setInput(
-                                "Give me a **animated connector** diagram of transformer's architecture",
+                                "给我一个使用**动画连接器**的Transformer架构图",
                             )
                             setFiles([])
                         }}
@@ -212,7 +212,7 @@ export default function ExamplePanel({
                         title={dict.examples.creativeDrawing}
                         description={dict.examples.creativeDescription}
                         onClick={() => {
-                            setInput("Draw a cat for me")
+                            setInput("为我画一只猫咪。")
                             setFiles([])
                         }}
                     />

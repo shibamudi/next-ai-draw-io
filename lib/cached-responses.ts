@@ -6,8 +6,7 @@ export interface CachedResponse {
 
 export const CACHED_EXAMPLE_RESPONSES: CachedResponse[] = [
     {
-        promptText:
-            "Give me a **animated connector** diagram of transformer's architecture",
+        promptText: "给我一个使用**动画连接器**的Transformer架构图",
         hasImage: false,
         xml: `<mxCell id="title" value="Transformer Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;" vertex="1" parent="1">
     <mxGeometry x="300" y="20" width="250" height="30" as="geometry"/>
@@ -252,7 +251,7 @@ export const CACHED_EXAMPLE_RESPONSES: CachedResponse[] = [
   </mxCell>`,
     },
     {
-        promptText: "Replicate this in aws style",
+        promptText: "用aws风格复现这个架构图。",
         hasImage: true,
         xml: `<mxCell id="2" value="AWS" style="sketch=0;outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;rounded=1;arcSize=5;" vertex="1" parent="1">
     <mxGeometry x="340" y="40" width="880" height="520" as="geometry"/>
@@ -316,7 +315,7 @@ export const CACHED_EXAMPLE_RESPONSES: CachedResponse[] = [
   </mxCell>`,
     },
     {
-        promptText: "Replicate this flowchart.",
+        promptText: "复现这个流程图。",
         hasImage: true,
         xml: `<mxCell id="2" value="Lamp doesn't work" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcccc;strokeColor=#000000;strokeWidth=2;fontSize=18;fontStyle=0;" vertex="1" parent="1">
     <mxGeometry x="140" y="40" width="180" height="60" as="geometry"/>
@@ -377,7 +376,7 @@ export const CACHED_EXAMPLE_RESPONSES: CachedResponse[] = [
   </mxCell>`,
     },
     {
-        promptText: "Summarize this paper as a diagram",
+        promptText: "请将这篇论文总结成一个图表",
         hasImage: true,
         xml: `<mxCell id="title_bg" parent="1"
                     style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1a237e;strokeColor=none;arcSize=8;"
@@ -733,7 +732,7 @@ export const CACHED_EXAMPLE_RESPONSES: CachedResponse[] = [
                 </mxCell>`,
     },
     {
-        promptText: "Draw a cat for me",
+        promptText: "为我画一只猫咪。",
         hasImage: false,
         xml: `<mxCell id="2" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FFE6CC;strokeColor=#000000;strokeWidth=2;" vertex="1" parent="1">
     <mxGeometry x="300" y="150" width="120" height="120" as="geometry"/>
