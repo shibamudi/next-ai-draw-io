@@ -24,7 +24,7 @@ services:
         - NEXT_PUBLIC_DRAWIO_BASE_URL=https://xplt.sdu.edu.cn/drawio
         # Uncomment below for subdirectory deployment
         - NEXT_PUBLIC_BASE_PATH=/nextaidrawio
-    ports: ["3000:3000"]
+    # ports: ["3000:3000"]
     env_file: .env
     environment:
       # For subdirectory deployment, uncomment and set your path:
